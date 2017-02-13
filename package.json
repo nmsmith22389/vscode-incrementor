@@ -1,0 +1,217 @@
+{
+  "name": "incrementor",
+  "displayName": "Incrementor",
+  "description": "Advanced increment / decrement actions for just about anything!",
+  "icon": "images/icon.svg",
+  "version": "0.1.0",
+  "publisher": "nmsmith89",
+  "galleryBanner": {
+    "color": "#E1F5FE",
+    "theme": "light"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/nmsmith22389/vscode-incrementor/issues",
+    "email": "nmsmith22389@gmail.com"
+  },
+  "homepage": "https://github.com/nmsmith22389/vscode-incrementor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nmsmith22389/vscode-incrementor.git"
+  },
+  "categories": [
+    "Formatters",
+    "Other"
+  ],
+  "keywords": [
+    "increment",
+    "decrement",
+    "incrementor",
+    "format",
+    "numbers",
+    "enumerators",
+    "value"
+  ],
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "main": "./out/src/extension",
+  "activationEvents": [
+    "onCommand:incrementor.incByOne",
+    "onCommand:incrementor.decByOne",
+    "onCommand:incrementor.incByTenth",
+    "onCommand:incrementor.decByTenth",
+    "onCommand:incrementor.incByTen",
+    "onCommand:incrementor.decByTen"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Incrementor",
+      "properties": {
+        "incrementor.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enables or disables Incrementor."
+        },
+        "incrementor.incByOneValue": {
+          "type": "integer",
+          "default": 1,
+          "maximum": 9,
+          "minimum": 1,
+          "description": "The value (ones place) to increment a number by."
+        },
+        "incrementor.decByOneValue": {
+          "type": "integer",
+          "default": -1,
+          "maximum": -1,
+          "minimum": -9,
+          "description": "The value (ones place) to decrement a number by."
+        },
+        "incrementor.incByTenthValue": {
+          "type": "number",
+          "default": 0.1,
+          "maximum": 0.9,
+          "minimum": 0.1,
+          "description": "The value (tenths place) to increment a number by."
+        },
+        "incrementor.decByTenthValue": {
+          "type": "number",
+          "default": -0.1,
+          "maximum": -0.1,
+          "minimum": -0.9,
+          "description": "The value (tenths place) to decrement a number by."
+        },
+        "incrementor.incByTenValue": {
+          "type": "integer",
+          "default": 10,
+          "maximum": 90,
+          "minimum": 10,
+          "multipleOf": 10,
+          "description": "The value (tens place) to increment a number by."
+        },
+        "incrementor.decByTenValue": {
+          "type": "integer",
+          "default": -10,
+          "maximum": -10,
+          "minimum": -90,
+          "multipleOf": 10,
+          "description": "The value (tens place) to decrement a number by."
+        },
+        "incrementor.decimalPlaces": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 10,
+          "description": "The number of decimal places to round incremented/decremented decimal numbers to.\n(a value of 0 will disable rounding)"
+        },
+        "incrementor.enums": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-zA-Z_]-?(?:[\\w]+-)*[\\w]+$"
+            }
+          },
+          "default": [
+            [
+              "false",
+              "true"
+            ],
+            [
+              "let",
+              "const"
+            ]
+          ],
+          "description": "A group of arrays, each containing a list of enums to cycle through."
+        },
+        "incrementor.loopEnums": {
+          "type": "boolean",
+          "default": true,
+          "description": "After reaching the end of an Enum set, start back at the beginning."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "incrementor.incByOne",
+        "title": "Increment by 1",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.decByOne",
+        "title": "Decrement by 1",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.incByTenth",
+        "title": "Increment by 0.1",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.decByTenth",
+        "title": "Decrement by 0.1",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.incByTen",
+        "title": "Increment by 10",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.decByTen",
+        "title": "Decrement by 10",
+        "category": "Incrementor"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "incrementor.incByOne",
+        "key": "ctrl+up"
+      },
+      {
+        "command": "incrementor.decByOne",
+        "key": "ctrl+down"
+      },
+      {
+        "command": "incrementor.incByTenth",
+        "key": "ctrl+alt+up"
+      },
+      {
+        "command": "incrementor.decByTenth",
+        "key": "ctrl+alt+down"
+      },
+      {
+        "command": "incrementor.incByTen",
+        "key": "ctrl+alt+cmd+up"
+      },
+      {
+        "command": "incrementor.decByTen",
+        "key": "ctrl+alt+cmd+down"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/lodash": "^4.14.52",
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^7.0.5",
+    "chai": "^3.5.0",
+    "mocha": "^2.3.3",
+    "tslint": "^4.4.2",
+    "tslint-eslint-rules": "^3.2.3",
+    "typescript": "^2.0.3",
+    "vscode": "^1.0.0"
+  },
+  "dependencies": {
+    "bignumber.js": "^4.0.0",
+    "lodash": "^4.17.4"
+  }
+}

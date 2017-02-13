@@ -1,0 +1,8 @@
+{
+  "name": "incrementor",
+  "dependencies": {},
+  "devDependencies": {
+    "bignumber.js": "registry:npm/bignumber.js#2.4.0+20160714211320"
+  },
+  "globalDevDependencies": {}
+}
