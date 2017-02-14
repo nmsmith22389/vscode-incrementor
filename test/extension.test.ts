@@ -21,8 +21,8 @@ let sel: vscode.Selection;
 let text: string;
 
 before(function(done) {
-    this.timeout(1000); // A very long environment setup.
-    setTimeout(done, 500);
+    this.timeout(2500); // A very long environment setup.
+    setTimeout(done, 2000);
 });
 
 describe('Actions', function() {
@@ -71,10 +71,10 @@ describe('Actions', function() {
 });
 
 describe('Numbers', function() {
-    this.slow(110);
-    this.timeout(200);
+    this.slow(350);
+    // this.timeout(1000);
 
-    beforeEach(function() {
+    before(function() {
         vEditor = vscode.window.activeTextEditor;
         vDoc = vEditor.document;
         vSel = vEditor.selections;
@@ -93,7 +93,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
 
         it('should increment 1px to 2px', function(done) {
@@ -107,7 +107,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
     });
 
@@ -124,7 +124,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
 
         it('should increment 1px to 0px', function(done) {
@@ -138,7 +138,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
     });
 
@@ -155,7 +155,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
 
         it('should increment 1px to 1.1px', function(done) {
@@ -169,7 +169,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
     });
 
@@ -186,7 +186,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
 
         it('should increment 1px to 0.9px', function(done) {
@@ -200,7 +200,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
     });
 
@@ -217,7 +217,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
 
         it('should increment 1px to 11px', function(done) {
@@ -231,7 +231,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
     });
 
@@ -248,7 +248,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
 
         it('should increment 1px to -9px', function(done) {
@@ -262,7 +262,7 @@ describe('Numbers', function() {
                 } catch (error) {
                     done(error);
                 } 
-            }, 100, done);
+            }, 300, done);
         });
     });
 });
