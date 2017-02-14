@@ -1,4 +1,9 @@
 out
+testing
 node_modules
-typings
+*.sw?
+.vscode-test
 .DS_Store
+*.vsix
+*.log
+typings

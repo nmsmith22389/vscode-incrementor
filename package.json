@@ -9,7 +9,7 @@
     "color": "#E1F5FE",
     "theme": "light"
   },
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nmsmith22389/vscode-incrementor/issues",
     "email": "nmsmith22389@gmail.com"
@@ -28,9 +28,7 @@
     "decrement",
     "incrementor",
     "format",
-    "numbers",
-    "enumerators",
-    "value"
+    "numbers"
   ],
   "engines": {
     "vscode": "^1.5.0"
@@ -204,7 +202,7 @@
     "@types/mocha": "^2.2.39",
     "@types/node": "^7.0.5",
     "chai": "^3.5.0",
-    "mocha": "^2.3.3",
+    "mocha": "^3.2.0",
     "tslint": "^4.4.2",
     "tslint-eslint-rules": "^3.2.3",
     "typescript": "^2.0.3",

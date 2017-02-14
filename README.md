@@ -1,5 +1,14 @@
 # **Incrementor** *(VSCode Extension)*
 
+[![GitHub stars](https://img.shields.io/github/stars/nmsmith22389/vscode-incrementor.svg?style=social&label=Star)](https://github.com/nmsmith22389/vscode-incrementor)
+
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/nmsmith89.incrementor.svg)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/nmsmith89.incrementor.svg)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)
+[![Rating](https://vsmarketplacebadge.apphb.com/rating-short/nmsmith89.incrementor.svg)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)
+
+[![Travis](https://img.shields.io/travis/nmsmith22389/vscode-incrementor.svg)](https://travis-ci.org/nmsmith22389/vscode-incrementor)
+![David](https://img.shields.io/david/nmsmith22389/vscode-incrementor.svg)
+
 > Increment or decrement just about anything!
 
 ![Demo](images/demo-main.gif)
