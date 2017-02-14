@@ -6,13 +6,14 @@
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/nmsmith89.incrementor.svg)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-short/nmsmith89.incrementor.svg)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)
 
-[![Travis](https://img.shields.io/travis/nmsmith22389/vscode-incrementor.svg)](https://travis-ci.org/nmsmith22389/vscode-incrementor)
+[![Travis](https://img.shields.io/travis/nmsmith22389/vscode-incrementor/master.svg)](https://travis-ci.org/nmsmith22389/vscode-incrementor)
 ![David](https://img.shields.io/david/nmsmith22389/vscode-incrementor.svg)
 
 > Increment or decrement just about anything!
 
 ![Demo](images/demo-main.gif)
 
+*(if you are reading this on the VSCode Marketplace then these links don't work for some reason)*
 ## Contents
 * [Features](#features)
   * [Numbers](#numbers)
