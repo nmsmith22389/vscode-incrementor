@@ -14,29 +14,53 @@ import BigNumber from 'bignumber.js';
 export function activate(context: vscode.ExtensionContext) {
 
     const inc = new Incrementor();
-    
+
     const comIncOne = vscode.commands.registerCommand('incrementor.incByOne', () => {
-        inc.run(inc.action.incByOne);
+        inc.run(inc.action.incByOne, inc.pointPart.y);
     });
 
     const comDecOne = vscode.commands.registerCommand('incrementor.decByOne', () => {
-        inc.run(inc.action.decByOne);
+        inc.run(inc.action.decByOne, inc.pointPart.y);
     });
-    
+
     const comIncTenth = vscode.commands.registerCommand('incrementor.incByTenth', () => {
-        inc.run(inc.action.incByTenth);
+        inc.run(inc.action.incByTenth, inc.pointPart.y);
     });
 
     const comDecTenth = vscode.commands.registerCommand('incrementor.decByTenth', () => {
-        inc.run(inc.action.decByTenth);
+        inc.run(inc.action.decByTenth, inc.pointPart.y);
     });
-    
+
     const comIncTen = vscode.commands.registerCommand('incrementor.incByTen', () => {
-        inc.run(inc.action.incByTen);
+        inc.run(inc.action.incByTen, inc.pointPart.y);
     });
 
     const comDecTen = vscode.commands.registerCommand('incrementor.decByTen', () => {
-        inc.run(inc.action.decByTen);
+        inc.run(inc.action.decByTen, inc.pointPart.y);
+    });
+
+    const comIncOneX = vscode.commands.registerCommand('incrementor.incByOneX', () => {
+        inc.run(inc.action.incByOne, inc.pointPart.x);
+    });
+
+    const comDecOneX = vscode.commands.registerCommand('incrementor.decByOneX', () => {
+        inc.run(inc.action.decByOne, inc.pointPart.x);
+    });
+
+    const comIncTenthX = vscode.commands.registerCommand('incrementor.incByTenthX', () => {
+        inc.run(inc.action.incByTenth, inc.pointPart.x);
+    });
+
+    const comDecTenthX = vscode.commands.registerCommand('incrementor.decByTenthX', () => {
+        inc.run(inc.action.decByTenth, inc.pointPart.x);
+    });
+
+    const comIncTenX = vscode.commands.registerCommand('incrementor.incByTenX', () => {
+        inc.run(inc.action.incByTen, inc.pointPart.x);
+    });
+
+    const comDecTenX = vscode.commands.registerCommand('incrementor.decByTenX', () => {
+        inc.run(inc.action.decByTen, inc.pointPart.x);
     });
 
     context.subscriptions.push(comIncOne);
@@ -45,6 +69,13 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(comDecTenth);
     context.subscriptions.push(comIncTen);
     context.subscriptions.push(comDecTen);
+
+    context.subscriptions.push(comIncOneX);
+    context.subscriptions.push(comDecOneX);
+    context.subscriptions.push(comIncTenthX);
+    context.subscriptions.push(comDecTenthX);
+    context.subscriptions.push(comIncTenX);
+    context.subscriptions.push(comDecTenX);
 }
 
 /**
@@ -53,7 +84,7 @@ export function activate(context: vscode.ExtensionContext) {
 export class Incrementor {
     /**
      * List of RegEx patterns that match different types of strings.
-     * 
+     *
      * @readonly
      */
     private regex = {
@@ -62,6 +93,7 @@ export class Incrementor {
         rgb:     /^(rgba(?=\((?:[\s\d]+,){3})|rgb(?!\((?:[\s\d]+,){3}))\(\s*(2[0-5]{2}|1\d{2}|[1-9]\d|\d),\s*(2[0-5]{2}|1\d{2}|[1-9]\d|\d),\s*(2[0-5]{2}|1\d{2}|[1-9]\d|\d)\s*(?:\)|(?:,\s*(1|0?\.\d+|0)\)))$/,
         rgbLine: /(rgba(?=\((?:[\s\d]+,){3})|rgb(?!\((?:[\s\d]+,){3}))\(\s*(2[0-5]{2}|1\d{2}|[1-9]\d|\d),\s*(2[0-5]{2}|1\d{2}|[1-9]\d|\d),\s*(2[0-5]{2}|1\d{2}|[1-9]\d|\d)\s*(?:\)|(?:,\s*(1|0?\.\d+|0)\)))/,
         hex:     /^#(?:([A-Fa-f0-9]{2})([A-Fa-f0-9]{2})([A-Fa-f0-9]{2})|([A-Fa-f0-9]{3}))$/,
+        point:   /^(-?\d+\.?\d*),(-?\d+\.?\d*)$/
     };
 
     private vEditor:       TextEditor;
@@ -84,6 +116,10 @@ export class Incrementor {
         incByTen:   10,
         decByTen:   -10
     };
+    public pointPart = {
+        x: 'x',
+        y: 'y'
+    };
     private hiddenSels: {
         isOn: boolean;
         pos: Position;
@@ -99,12 +135,12 @@ export class Incrementor {
     /**
      * Run when a command is triggered from the editor.
      * All inc/dec methods are triggered from this method.
-     * 
+     *
      * @param delta The amount to change by.
-     * 
+     *
      *  _(taken from the `this.action` object)_
      */
-    run(delta: number) {
+    run(delta: number, pointPart: string) {
         BigNumber.config({ ERRORS: false });
 
         const action = _.findKey(this.action, (o) => {
@@ -135,7 +171,8 @@ export class Incrementor {
                 this.isReversed = (sel.isEmpty) ? false : sel.isReversed;
 
                 if (this.wordRange && !this.wordRange.isEmpty) {
-                    this.changeNumber() ||
+                    this.changePoint(pointPart) ||
+                        this.changeNumber() ||
                         this.changeEnum() ||
                         this.doNothing(sel);
                 }
@@ -163,7 +200,7 @@ export class Incrementor {
 
     /**
      * Increments or decrements a number.
-     * 
+     *
      * @private
      * @param editor TextEditorEdit object passed through to make edits.
      * @returns Success_(true)_ or fail_(false)_.
@@ -200,6 +237,53 @@ export class Incrementor {
                 const wordChanged = partNumber.toString() + partText;
 
                 return this.replace(tempRange, wordChanged);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Increments or decrements a point on X or Y axe.
+     *
+     * @private
+     * @param editor TextEditorEdit object passed through to make edits.
+     * @returns Success_(true)_ or fail_(false)_.
+     */
+    private changePoint(pointPart: string): boolean {
+        if (this.regex.point.test(this.wordString)) {
+            const prevChar = this.getPrevChar();
+            let tempString = this.wordString;
+            let tempRange  = this.wordRange;
+
+            if (prevChar.char === '-' && tempString[0] !== '-') {
+                tempRange = new Range(prevChar.pos, this.wordRange.end);
+                tempString = this.vDoc.getText(tempRange);
+            }
+
+            // [0] = Original string
+            // [1] = x part
+            // [2] = y part
+            const wordReg = this.regex.point.exec(tempString);
+            let xPartNumber = new BigNumber(wordReg[1]);
+            let yPartNumber = new BigNumber(wordReg[2]);
+
+            if (xPartNumber.isFinite() && yPartNumber.isFinite()) {
+                if (pointPart === this.pointPart.x) {
+                    return this.replace(
+                        tempRange,
+                        this.increment(xPartNumber).toString() + ',' + wordReg[2]
+                    );
+                }
+                if (pointPart === this.pointPart.y) {
+                    return this.replace(
+                        tempRange,
+                        wordReg[1] + ',' + this.increment(yPartNumber).toString()
+                    );
+                }
+                return false;
             } else {
                 return false;
             }
@@ -339,16 +423,27 @@ export class Incrementor {
         if (pos === undefined && this.wordRange.start.character > 0) {
             pos = this.wordRange.start.translate(0, -1);
         }
-        
+
         return {
             pos,
             char: this.vDoc.getText(new Range(pos, pos.translate(0, 1)))
         };
     }
 
+    private increment(n: any) {
+        const newNumber = n.plus(this.delta);
+        const decPlaces = new BigNumber(this.settings['decimalPlaces']).absoluteValue();
+
+        // decPlaces = 0 === rounding off
+        if (decPlaces.isInteger() && decPlaces.greaterThan(0)) {
+            return newNumber.round(decPlaces.toNumber());
+        }
+        return newNumber;
+    }
+
     /**
      * Checks if there are any Selections after `pos`.
-     * 
+     *
      * @private
      * @param pos The Position to look after.
      * @returns `true` if Selections exist after `pos`, otherwise `false`.
@@ -378,7 +473,7 @@ export class Incrementor {
 
     /**
      * Shifts all Selections on line after `pos` by `amount`.
-     * 
+     *
      * @private
      * @param pos The Position to look after.
      * @param amount The amount to shift the selection by.
@@ -399,9 +494,9 @@ export class Incrementor {
 
     /**
      * Replaces text at `range` with `text`.
-     * 
+     *
      * _Does more than `TextEditorEdit.replace()`._
-     * 
+     *
      * @private
      * @param range Range at which text will be replaced.
      * @param text Text to replace with.
@@ -413,7 +508,7 @@ export class Incrementor {
 
         // console.warn(`${text}'s diffLength = ${diffLength}`);
 
-        this.edit.replace(range, text);        
+        this.edit.replace(range, text);
 
         let rangeNew = new Range(range.start, range.start.translate(0, text.length));
 
@@ -433,7 +528,7 @@ export class Incrementor {
                 } else {
                     this.hiddenSels.diff = diffLength;
                 }
-                
+
                 this.hiddenSels.isOn = true;
                 this.hiddenSels.pos = range.end;
             }
@@ -464,7 +559,7 @@ export class Incrementor {
 
     /**
      * Check a line for a specific pattern and return it if it exists.
-     * 
+     *
      * @private
      * @param pos Line Position to check at.
      * @param pattern Pattern to search for.

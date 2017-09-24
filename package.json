@@ -163,6 +163,36 @@
         "command": "incrementor.decByTen",
         "title": "Decrement by 10",
         "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.incByOneX",
+        "title": "Increment by 1 the X part of a point",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.decByOneX",
+        "title": "Decrement by 1 the X part of a point",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.incByTenthX",
+        "title": "Increment by 0.1 the X part of a point",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.decByTenthX",
+        "title": "Decrement by 0.1 the X part of a point",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.incByTenX",
+        "title": "Increment by 10 the X part of a point",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.decByTenX",
+        "title": "Decrement by 10 the X part of a point",
+        "category": "Incrementor"
       }
     ],
     "keybindings": [
@@ -189,6 +219,30 @@
       {
         "command": "incrementor.decByTen",
         "key": "ctrl+alt+cmd+down"
+      },
+      {
+        "command": "incrementor.incByOneX",
+        "key": "ctrl+right"
+      },
+      {
+        "command": "incrementor.decByOneX",
+        "key": "ctrl+left"
+      },
+      {
+        "command": "incrementor.incByTenthX",
+        "key": "ctrl+alt+right"
+      },
+      {
+        "command": "incrementor.decByTenthX",
+        "key": "ctrl+alt+left"
+      },
+      {
+        "command": "incrementor.incByTenX",
+        "key": "ctrl+alt+cmd+right"
+      },
+      {
+        "command": "incrementor.decByTenX",
+        "key": "ctrl+alt+cmd+left"
       }
     ]
   },
