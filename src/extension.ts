@@ -14,7 +14,7 @@ import BigNumber from 'bignumber.js';
 export function activate(context: vscode.ExtensionContext) {
 
     const inc = new Incrementor();
-    
+
     const comIncOne = vscode.commands.registerCommand('incrementor.incByOne', () => {
         inc.run(inc.action.incByOne);
     });
@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
     const comDecOne = vscode.commands.registerCommand('incrementor.decByOne', () => {
         inc.run(inc.action.decByOne);
     });
-    
+
     const comIncTenth = vscode.commands.registerCommand('incrementor.incByTenth', () => {
         inc.run(inc.action.incByTenth);
     });
@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
     const comDecTenth = vscode.commands.registerCommand('incrementor.decByTenth', () => {
         inc.run(inc.action.decByTenth);
     });
-    
+
     const comIncTen = vscode.commands.registerCommand('incrementor.incByTen', () => {
         inc.run(inc.action.incByTen);
     });
@@ -53,7 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
 export class Incrementor {
     /**
      * List of RegEx patterns that match different types of strings.
-     * 
+     *
      * @readonly
      */
     private regex = {
@@ -99,9 +99,9 @@ export class Incrementor {
     /**
      * Run when a command is triggered from the editor.
      * All inc/dec methods are triggered from this method.
-     * 
+     *
      * @param delta The amount to change by.
-     * 
+     *
      *  _(taken from the `this.action` object)_
      */
     run(delta: number) {
@@ -163,7 +163,7 @@ export class Incrementor {
 
     /**
      * Increments or decrements a number.
-     * 
+     *
      * @private
      * @param editor TextEditorEdit object passed through to make edits.
      * @returns Success_(true)_ or fail_(false)_.
@@ -336,10 +336,17 @@ export class Incrementor {
     }
 
     private getPrevChar(pos?: Position) {
+        if (this.wordRange.start.character === 0) {
+            return {
+                pos,
+                char: ''
+            };
+        }
+
         if (pos === undefined && this.wordRange.start.character > 0) {
             pos = this.wordRange.start.translate(0, -1);
         }
-        
+
         return {
             pos,
             char: this.vDoc.getText(new Range(pos, pos.translate(0, 1)))
@@ -348,7 +355,7 @@ export class Incrementor {
 
     /**
      * Checks if there are any Selections after `pos`.
-     * 
+     *
      * @private
      * @param pos The Position to look after.
      * @returns `true` if Selections exist after `pos`, otherwise `false`.
@@ -378,7 +385,7 @@ export class Incrementor {
 
     /**
      * Shifts all Selections on line after `pos` by `amount`.
-     * 
+     *
      * @private
      * @param pos The Position to look after.
      * @param amount The amount to shift the selection by.
@@ -399,9 +406,9 @@ export class Incrementor {
 
     /**
      * Replaces text at `range` with `text`.
-     * 
+     *
      * _Does more than `TextEditorEdit.replace()`._
-     * 
+     *
      * @private
      * @param range Range at which text will be replaced.
      * @param text Text to replace with.
@@ -413,7 +420,7 @@ export class Incrementor {
 
         // console.warn(`${text}'s diffLength = ${diffLength}`);
 
-        this.edit.replace(range, text);        
+        this.edit.replace(range, text);
 
         let rangeNew = new Range(range.start, range.start.translate(0, text.length));
 
@@ -433,7 +440,7 @@ export class Incrementor {
                 } else {
                     this.hiddenSels.diff = diffLength;
                 }
-                
+
                 this.hiddenSels.isOn = true;
                 this.hiddenSels.pos = range.end;
             }
@@ -464,7 +471,7 @@ export class Incrementor {
 
     /**
      * Check a line for a specific pattern and return it if it exists.
-     * 
+     *
      * @private
      * @param pos Line Position to check at.
      * @param pattern Pattern to search for.
