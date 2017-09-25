@@ -18,3 +18,7 @@ const incByTen = '1px';
 
 // decByTen
 const decByTen = '1px';
+
+const array = [
+10 // number sticky to the line start
+];
