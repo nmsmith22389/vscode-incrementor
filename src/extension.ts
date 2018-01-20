@@ -137,6 +137,7 @@ export class Incrementor {
                 if (this.wordRange && !this.wordRange.isEmpty) {
                     this.changeNumber() ||
                         this.changeEnum() ||
+                        this.changeCase() ||
                         this.doNothing(sel);
                 }
             }
@@ -249,6 +250,27 @@ export class Incrementor {
             }
 
             let wordChanged = tempString;
+            let found = false;
+            for (const enums of this.settings['enums']) {
+                if (_.includes(enums, tempString)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            let keepCase = (word: string): string => word;
+            if (found === false) {
+                if (/^[A-Z1-9_]+$/.test(tempString)) {
+                    keepCase = (word) => word.toUpperCase();
+                } else if (/^[A-Z][a-z1-9_]+$/.test(tempString)) {
+                    keepCase = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+                } else {
+                    keepCase = (word) => word.toLowerCase();
+                }
+
+                tempString = tempString.toLowerCase();
+            }
+
             for (const enums of this.settings['enums']) {
                 if (_.includes(enums, tempString)) {
                     const eIndex = _.indexOf(enums, tempString);
@@ -276,6 +298,8 @@ export class Incrementor {
                         }
                     }
 
+                    wordChanged = keepCase(wordChanged);
+
                     return this.replace(tempRange, wordChanged);
                 }
             }
@@ -284,6 +308,46 @@ export class Incrementor {
         } else {
             return false;
         }
+    }
+
+    private changeCase() {
+        const word = this.wordString;
+        let wordChanged = word;
+
+        switch (this.delta) {
+            case this.action.incByOne:
+                if (word.charAt(0).toLowerCase() === word.charAt(0)) {
+                    wordChanged = word.charAt(0).toUpperCase() + word.slice(1);
+                } else {
+                    wordChanged = word.toUpperCase();
+                }
+                break;
+
+            case this.action.decByOne:
+                if (word.toUpperCase() === word) {
+                    wordChanged = word.charAt(0) + word.slice(1).toLowerCase();
+                } else {
+                    wordChanged = word.toLowerCase();
+                }
+                break;
+
+            case this.action.incByTen:
+                wordChanged = word.toUpperCase();
+                break;
+
+            case this.action.decByTen:
+                wordChanged = word.toLowerCase();
+                break;
+
+            default:
+                return false;
+        }
+
+        if (wordChanged !== word) {
+            return this.replace(this.wordRange, wordChanged);
+        }
+
+        return false;
     }
 
     /*private changeRGB(editor: TextEditorEdit) {
