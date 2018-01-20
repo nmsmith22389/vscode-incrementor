@@ -130,6 +130,16 @@
           "type": "boolean",
           "default": true,
           "description": "After reaching the end of an Enum set, start back at the beginning."
+        },
+        "incrementor.keepEnumCase": {
+          "type": "boolean",
+          "default": true,
+          "description": "Attempt to keep word casing of the next entry of an Enum set. Enums must be defined in lowercase for it to work."
+        },
+        "incrementor.changeCase": {
+          "type": "boolean",
+          "default": true,
+          "description": "If a selected word is not a Number or an Enum, change its form to lowercase, Capitalized, or UPPERCASE."
         }
       }
     },
