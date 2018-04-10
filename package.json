@@ -42,7 +42,9 @@
     "onCommand:incrementor.incByTenth",
     "onCommand:incrementor.decByTenth",
     "onCommand:incrementor.incByTen",
-    "onCommand:incrementor.decByTen"
+    "onCommand:incrementor.decByTen",
+    "onCommand:incrementor.incByHundred",
+    "onCommand:incrementor.decByHundred"
   ],
   "contributes": {
     "configuration": {
@@ -97,6 +99,22 @@
           "minimum": -90,
           "multipleOf": 10,
           "description": "The value (tens place) to decrement a number by."
+        },
+        "incrementor.incByHundredValue": {
+          "type": "integer",
+          "default": 100,
+          "maximum": 900,
+          "minimum": 100,
+          "multipleOf": 100,
+          "description": "The value (hundreds place) to increment a number by."
+        },
+        "incrementor.decByHundredValue": {
+          "type": "integer",
+          "default": -100,
+          "maximum": -100,
+          "minimum": -900,
+          "multipleOf": 100,
+          "description": "The value (hundreds place) to decrement a number by."
         },
         "incrementor.decimalPlaces": {
           "type": "integer",
@@ -163,6 +181,16 @@
         "command": "incrementor.decByTen",
         "title": "Decrement by 10",
         "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.incByHundred",
+        "title": "Increment by 100",
+        "category": "Incrementor"
+      },
+      {
+        "command": "incrementor.decByHundred",
+        "title": "Decrement by 100",
+        "category": "Incrementor"
       }
     ],
     "keybindings": [
@@ -189,6 +217,14 @@
       {
         "command": "incrementor.decByTen",
         "key": "ctrl+alt+cmd+down"
+      },
+      {
+        "command": "incrementor.incByHundred",
+        "key": "ctrl+alt+shift+up"
+      },
+      {
+        "command": "incrementor.decByHundred",
+        "key": "ctrl+alt+shift+down"
       }
     ]
   },

@@ -39,12 +39,22 @@ export function activate(context: vscode.ExtensionContext) {
         inc.run(inc.action.decByTen);
     });
 
+    const comIncHundred = vscode.commands.registerCommand('incrementor.incByHundred', () => {
+        inc.run(inc.action.incByHundred);
+    });
+    const comDecHundred = vscode.commands.registerCommand('incrementor.decByHundred', () => {
+        inc.run(inc.action.decByHundred);
+    });
+
     context.subscriptions.push(comIncOne);
     context.subscriptions.push(comDecOne);
     context.subscriptions.push(comIncTenth);
     context.subscriptions.push(comDecTenth);
     context.subscriptions.push(comIncTen);
     context.subscriptions.push(comDecTen);
+    context.subscriptions.push(comIncHundred);
+    context.subscriptions.push(comDecHundred);
+
 }
 
 /**
@@ -82,8 +92,10 @@ export class Incrementor {
         incByTenth: 0.1,
         decByTenth: -0.1,
         incByTen:   10,
-        decByTen:   -10
-    };
+        decByTen:   -10,
+        incByHundred: 100,
+        decByHundred: -100
+};
     private hiddenSels: {
         isOn: boolean;
         pos: Position;
@@ -157,7 +169,9 @@ export class Incrementor {
             incByTenth: (/^(?:[01](?:\.0)?|0\.[1-9])$/.test(this.settings['incByTenthValue'])) ? this.settings['incByTenthValue'] : 0.1,
             decByTenth: (/^(?:[01](?:\.0)?|0\.[1-9])$/.test(this.settings['decByTenthValue'])) ? this.settings['decByTenthValue'] : -0.1,
             incByTen: this.settings['incByTenValue'] || 10,
-            decByTen: this.settings['decByTenValue'] || -10
+            decByTen: this.settings['decByTenValue'] || -10,
+            incByHundred: this.settings['incByHundredValue'] || 100,
+            decByHundred: this.settings['decByHundredValue'] || -100
         };
     }
 
