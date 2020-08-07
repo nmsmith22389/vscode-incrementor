@@ -86,8 +86,8 @@ describe('Numbers', function() {
                 sel = new vscode.Selection(4, 18, 4, 21);
                 vEditor.selection = sel;
                 text = vDoc.getText(vEditor.selection);
-                
-                try {  
+
+                try {
                     text.should.equal('1px');
                     done();
                 } catch (error) {
@@ -101,13 +101,44 @@ describe('Numbers', function() {
             _.delay((done) => {
                 text = vDoc.getText(vEditor.selection);
 
-                try {  
+                try {
                     text.should.equal('2px');
                     done();
                 } catch (error) {
                     done(error);
                 } 
             }, 300, done);
+        });
+
+        describe('a sticky number', function() {
+            it('should have 10 as selected text', function(done) {
+                _.delay((done) => {
+                    sel = new vscode.Selection(22, 0, 22, 2);
+                    vEditor.selection = sel;
+                    text = vDoc.getText(vEditor.selection);
+
+                    try {
+                        text.should.equal('10');
+                        done();
+                    } catch (error) {
+                        done(error);
+                    }
+                }, 100, done);
+            });
+
+            it('should increment 10 to 11', function(done) {
+                vscode.commands.executeCommand('incrementor.incByOne');
+                _.delay((done) => {
+                    text = vDoc.getText(vEditor.selection);
+
+                    try {
+                        text.should.equal('11');
+                        done();
+                    } catch (error) {
+                        done(error);
+                    }
+                }, 100, done);
+            });
         });
     });
 
@@ -117,8 +148,8 @@ describe('Numbers', function() {
                 sel = new vscode.Selection(7, 18, 7, 21);
                 vEditor.selection = sel;
                 text = vDoc.getText(vEditor.selection);
-                
-                try {  
+
+                try {
                     text.should.equal('1px');
                     done();
                 } catch (error) {
@@ -132,7 +163,7 @@ describe('Numbers', function() {
             _.delay((done) => {
                 text = vDoc.getText(vEditor.selection);
 
-                try {  
+                try {
                     text.should.equal('0px');
                     done();
                 } catch (error) {
@@ -148,8 +179,8 @@ describe('Numbers', function() {
                 sel = new vscode.Selection(10, 20, 10, 23);
                 vEditor.selection = sel;
                 text = vDoc.getText(vEditor.selection);
-                
-                try {  
+
+                try {
                     text.should.equal('1px');
                     done();
                 } catch (error) {
@@ -163,7 +194,7 @@ describe('Numbers', function() {
             _.delay((done) => {
                 text = vDoc.getText(vEditor.selection);
 
-                try {  
+                try {
                     text.should.equal('1.1px');
                     done();
                 } catch (error) {
@@ -179,8 +210,8 @@ describe('Numbers', function() {
                 sel = new vscode.Selection(13, 20, 13, 23);
                 vEditor.selection = sel;
                 text = vDoc.getText(vEditor.selection);
-                
-                try {  
+
+                try {
                     text.should.equal('1px');
                     done();
                 } catch (error) {
@@ -194,7 +225,7 @@ describe('Numbers', function() {
             _.delay((done) => {
                 text = vDoc.getText(vEditor.selection);
 
-                try {  
+                try {
                     text.should.equal('0.9px');
                     done();
                 } catch (error) {
@@ -210,8 +241,8 @@ describe('Numbers', function() {
                 sel = new vscode.Selection(16, 18, 16, 21);
                 vEditor.selection = sel;
                 text = vDoc.getText(vEditor.selection);
-                
-                try {  
+
+                try {
                     text.should.equal('1px');
                     done();
                 } catch (error) {
@@ -225,7 +256,7 @@ describe('Numbers', function() {
             _.delay((done) => {
                 text = vDoc.getText(vEditor.selection);
 
-                try {  
+                try {
                     text.should.equal('11px');
                     done();
                 } catch (error) {
@@ -241,8 +272,8 @@ describe('Numbers', function() {
                 sel = new vscode.Selection(19, 18, 19, 21);
                 vEditor.selection = sel;
                 text = vDoc.getText(vEditor.selection);
-                
-                try {  
+
+                try {
                     text.should.equal('1px');
                     done();
                 } catch (error) {
@@ -256,7 +287,7 @@ describe('Numbers', function() {
             _.delay((done) => {
                 text = vDoc.getText(vEditor.selection);
 
-                try {  
+                try {
                     text.should.equal('-9px');
                     done();
                 } catch (error) {
