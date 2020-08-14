@@ -1,215 +1,355 @@
 {
-  "name": "incrementor",
-  "displayName": "Incrementor",
-  "description": "Advanced increment / decrement actions for just about anything!",
-  "icon": "images/icon.svg",
-  "version": "0.1.0",
-  "publisher": "nmsmith89",
-  "galleryBanner": {
-    "color": "#E1F5FE",
-    "theme": "light"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nmsmith22389/vscode-incrementor/issues",
-    "email": "nmsmith22389@gmail.com"
-  },
-  "homepage": "https://github.com/nmsmith22389/vscode-incrementor",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nmsmith22389/vscode-incrementor.git"
-  },
-  "categories": [
-    "Formatters",
-    "Other"
-  ],
-  "keywords": [
-    "increment",
-    "decrement",
-    "incrementor",
-    "format",
-    "numbers"
-  ],
-  "engines": {
-    "vscode": "^1.5.0"
-  },
-  "main": "./out/src/extension",
-  "activationEvents": [
-    "onCommand:incrementor.incByOne",
-    "onCommand:incrementor.decByOne",
-    "onCommand:incrementor.incByTenth",
-    "onCommand:incrementor.decByTenth",
-    "onCommand:incrementor.incByTen",
-    "onCommand:incrementor.decByTen"
-  ],
-  "contributes": {
-    "configuration": {
-      "type": "object",
-      "title": "Incrementor",
-      "properties": {
-        "incrementor.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enables or disables Incrementor."
-        },
-        "incrementor.incByOneValue": {
-          "type": "integer",
-          "default": 1,
-          "maximum": 9,
-          "minimum": 1,
-          "description": "The value (ones place) to increment a number by."
-        },
-        "incrementor.decByOneValue": {
-          "type": "integer",
-          "default": -1,
-          "maximum": -1,
-          "minimum": -9,
-          "description": "The value (ones place) to decrement a number by."
-        },
-        "incrementor.incByTenthValue": {
-          "type": "number",
-          "default": 0.1,
-          "maximum": 0.9,
-          "minimum": 0.1,
-          "description": "The value (tenths place) to increment a number by."
-        },
-        "incrementor.decByTenthValue": {
-          "type": "number",
-          "default": -0.1,
-          "maximum": -0.1,
-          "minimum": -0.9,
-          "description": "The value (tenths place) to decrement a number by."
-        },
-        "incrementor.incByTenValue": {
-          "type": "integer",
-          "default": 10,
-          "maximum": 90,
-          "minimum": 10,
-          "multipleOf": 10,
-          "description": "The value (tens place) to increment a number by."
-        },
-        "incrementor.decByTenValue": {
-          "type": "integer",
-          "default": -10,
-          "maximum": -10,
-          "minimum": -90,
-          "multipleOf": 10,
-          "description": "The value (tens place) to decrement a number by."
-        },
-        "incrementor.decimalPlaces": {
-          "type": "integer",
-          "default": 0,
-          "minimum": 0,
-          "maximum": 10,
-          "description": "The number of decimal places to round incremented/decremented decimal numbers to.\n(a value of 0 will disable rounding)"
-        },
-        "incrementor.enums": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[a-zA-Z_]-?(?:[\\w]+-)*[\\w]+$"
-            }
-          },
-          "default": [
-            [
-              "false",
-              "true"
-            ],
-            [
-              "let",
-              "const"
-            ]
-          ],
-          "description": "A group of arrays, each containing a list of enums to cycle through."
-        },
-        "incrementor.loopEnums": {
-          "type": "boolean",
-          "default": true,
-          "description": "After reaching the end of an Enum set, start back at the beginning."
-        }
-      }
+    "name": "incrementor",
+    "displayName": "Incrementor",
+    "description": "Advanced increment / decrement actions for just about anything!",
+    "icon": "images/icon.svg",
+    "version": "0.1.0",
+    "publisher": "nmsmith89",
+    "galleryBanner": {
+        "color": "#E1F5FE",
+        "theme": "light"
     },
-    "commands": [
-      {
-        "command": "incrementor.incByOne",
-        "title": "Increment by 1",
-        "category": "Incrementor"
-      },
-      {
-        "command": "incrementor.decByOne",
-        "title": "Decrement by 1",
-        "category": "Incrementor"
-      },
-      {
-        "command": "incrementor.incByTenth",
-        "title": "Increment by 0.1",
-        "category": "Incrementor"
-      },
-      {
-        "command": "incrementor.decByTenth",
-        "title": "Decrement by 0.1",
-        "category": "Incrementor"
-      },
-      {
-        "command": "incrementor.incByTen",
-        "title": "Increment by 10",
-        "category": "Incrementor"
-      },
-      {
-        "command": "incrementor.decByTen",
-        "title": "Decrement by 10",
-        "category": "Incrementor"
-      }
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nmsmith22389/vscode-incrementor/issues",
+        "email": "nmsmith22389@gmail.com"
+    },
+    "homepage": "https://github.com/nmsmith22389/vscode-incrementor",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nmsmith22389/vscode-incrementor.git"
+    },
+    "categories": [
+        "Formatters",
+        "Other"
     ],
-    "keybindings": [
-      {
-        "command": "incrementor.incByOne",
-        "key": "ctrl+up"
-      },
-      {
-        "command": "incrementor.decByOne",
-        "key": "ctrl+down"
-      },
-      {
-        "command": "incrementor.incByTenth",
-        "key": "ctrl+alt+up"
-      },
-      {
-        "command": "incrementor.decByTenth",
-        "key": "ctrl+alt+down"
-      },
-      {
-        "command": "incrementor.incByTen",
-        "key": "ctrl+alt+cmd+up"
-      },
-      {
-        "command": "incrementor.decByTen",
-        "key": "ctrl+alt+cmd+down"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "@types/chai": "^3.4.34",
-    "@types/lodash": "^4.14.52",
-    "@types/mocha": "^2.2.39",
-    "@types/node": "^7.0.5",
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "tslint": "^4.4.2",
-    "tslint-eslint-rules": "^3.2.3",
-    "typescript": "^2.0.3",
-    "vscode": "^1.0.0"
-  },
-  "dependencies": {
-    "bignumber.js": "^4.0.0",
-    "lodash": "^4.17.4"
-  }
+    "_moduleAliases": {
+        "~": "out"
+    },
+    "keywords": [
+        "increment",
+        "decrement",
+        "incrementor",
+        "format",
+        "numbers"
+    ],
+    "engines": {
+        "vscode": "^1.47.0"
+    },
+    "main": "./out/extension.js",
+    "activationEvents": [
+        "onCommand:incrementor.incrementByOne",
+        "onCommand:incrementor.decrementByOne",
+        "onCommand:incrementor.incrementByTenth",
+        "onCommand:incrementor.decrementByTenth",
+        "onCommand:incrementor.incrementByTen",
+        "onCommand:incrementor.decrementByTen"
+    ],
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Incrementor",
+            "properties": {
+                "incrementor.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enables or disables Incrementor.",
+                    "scope": "resource"
+                },
+                "incrementor.numbers.ones.incrementValue": {
+                    "type": "integer",
+                    "default": 1,
+                    "maximum": 9,
+                    "minimum": 1,
+                    "markdownDescription": "The **ones place** value to increment a number by.",
+                    "scope": "resource"
+                },
+                "incrementor.incrementByOneValue": {
+                    "type": "integer",
+                    "default": 1,
+                    "maximum": 9,
+                    "minimum": 1,
+                    "markdownDescription": "The **ones place** value to increment a number by.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.ones.incrementValue#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.ones.incrementValue instead."
+                },
+                "incrementor.numbers.ones.decrementValue": {
+                    "type": "integer",
+                    "default": -1,
+                    "maximum": -1,
+                    "minimum": -9,
+                    "markdownDescription": "The **ones place** value to decrement a number by.",
+                    "scope": "resource"
+                },
+                "incrementor.decrementByOneValue": {
+                    "type": "integer",
+                    "default": -1,
+                    "maximum": -1,
+                    "minimum": -9,
+                    "markdownDescription": "The **ones place** value to decrement a number by.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.ones.decrementValue#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.ones.decrementValue instead."
+                },
+                "incrementor.numbers.tenths.incrementValue": {
+                    "type": "number",
+                    "default": 0.1,
+                    "maximum": 0.9,
+                    "minimum": 0.1,
+                    "markdownDescription": "The **tenths place** value to increment a number by.",
+                    "scope": "resource"
+                },
+                "incrementor.incrementByTenthValue": {
+                    "type": "number",
+                    "default": 0.1,
+                    "maximum": 0.9,
+                    "minimum": 0.1,
+                    "markdownDescription": "The **tenths place** value to increment a number by.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tenths.incrementValue#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tenths.incrementValue instead."
+                },
+                "incrementor.numbers.tenths.decrementValue": {
+                    "type": "number",
+                    "default": -0.1,
+                    "maximum": -0.1,
+                    "minimum": -0.9,
+                    "markdownDescription": "The **tenths place** value to decrement a number by.",
+                    "scope": "resource"
+                },
+                "incrementor.decrementByTenthValue": {
+                    "type": "number",
+                    "default": -0.1,
+                    "maximum": -0.1,
+                    "minimum": -0.9,
+                    "markdownDescription": "The **tenths place** value to decrement a number by.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tenths.decrementValue#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tenths.decrementValue instead."
+                },
+                "incrementor.numbers.tens.incrementValue": {
+                    "type": "integer",
+                    "default": 10,
+                    "maximum": 90,
+                    "minimum": 10,
+                    "multipleOf": 10,
+                    "markdownDescription": "The **tens place** value to increment a number by.",
+                    "scope": "resource"
+                },
+                "incrementor.incrementByTenValue": {
+                    "type": "integer",
+                    "default": 10,
+                    "maximum": 90,
+                    "minimum": 10,
+                    "multipleOf": 10,
+                    "markdownDescription": "The **tens place** value to increment a number by.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tens.incrementValue#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tens.incrementValue instead."
+                },
+                "incrementor.numbers.tens.decrementValue": {
+                    "type": "integer",
+                    "default": -10,
+                    "maximum": -10,
+                    "minimum": -90,
+                    "multipleOf": 10,
+                    "markdownDescription": "The **tens place** value to decrement a number by.",
+                    "scope": "resource"
+                },
+                "incrementor.decrementByTenValue": {
+                    "type": "integer",
+                    "default": -10,
+                    "maximum": -10,
+                    "minimum": -90,
+                    "multipleOf": 10,
+                    "markdownDescription": "The **tens place** value to decrement a number by.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tens.decrementValue#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tens.decrementValue instead."
+                },
+                "incrementor.numbers.decimalPlaces": {
+                    "type": "integer",
+                    "default": -1,
+                    "minimum": -1,
+                    "maximum": 10,
+                    "markdownDescription": "The number of decimal places to round incremented/decremented decimal numbers to.\n\n*(a value of -1 will disable rounding)*",
+                    "scope": "resource"
+                },
+                "incrementor.decimalPlaces": {
+                    "type": "integer",
+                    "default": -1,
+                    "minimum": -1,
+                    "maximum": 10,
+                    "markdownDescription": "The number of decimal places to round incremented/decremented decimal numbers to.\n*(a value of -1 will disable rounding)*",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.decimalPlaces#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.decimalPlaces instead."
+                },
+                "incrementor.enums.values": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "pattern": "^\\w(?:\\-?\\w+)*$"
+                        }
+                    },
+                    "default": [
+                        [
+                            "false",
+                            "true"
+                        ],
+                        [
+                            "let",
+                            "const"
+                        ],
+                        [
+                            "public",
+                            "private",
+                            "protected"
+                        ]
+                    ],
+                    "markdownDescription": "A group of arrays, each containing a list of enums to cycle through.",
+                    "scope": "resource"
+                },
+                "incrementor.enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "pattern": "^\\w(?:\\-?\\w+)*$"
+                        }
+                    },
+                    "default": [
+                        [
+                            "false",
+                            "true"
+                        ],
+                        [
+                            "let",
+                            "const"
+                        ]
+                    ],
+                    "markdownDescription": "A group of arrays, each containing a list of enums to cycle through.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.enums.values#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.enums.values instead."
+                },
+                "incrementor.enums.loop": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "After reaching the end of an enum set, start back at the beginning.",
+                    "scope": "resource"
+                },
+                "incrementor.loop": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "After reaching the end of an enum set, start back at the beginning.",
+                    "scope": "resource",
+                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.enums.loop#` instead.",
+                    "deprecationMessage": "Deprecated: Please use incrementor.enums.loop instead."
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "incrementor.incrementByOne",
+                "title": "Increment by 1",
+                "category": "Incrementor"
+            },
+            {
+                "command": "incrementor.decrementByOne",
+                "title": "Decrement by 1",
+                "category": "Incrementor"
+            },
+            {
+                "command": "incrementor.incrementByTenth",
+                "title": "Increment by 0.1",
+                "category": "Incrementor"
+            },
+            {
+                "command": "incrementor.decrementByTenth",
+                "title": "Decrement by 0.1",
+                "category": "Incrementor"
+            },
+            {
+                "command": "incrementor.incrementByTen",
+                "title": "Increment by 10",
+                "category": "Incrementor"
+            },
+            {
+                "command": "incrementor.decrementByTen",
+                "title": "Decrement by 10",
+                "category": "Incrementor"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "incrementor.incrementByOne",
+                "key": "ctrl+up"
+            },
+            {
+                "command": "incrementor.decrementByOne",
+                "key": "ctrl+down"
+            },
+            {
+                "command": "incrementor.incrementByTenth",
+                "key": "ctrl+shift+alt+up"
+            },
+            {
+                "command": "incrementor.decrementByTenth",
+                "key": "ctrl+shift+alt+down"
+            },
+            {
+                "command": "incrementor.incrementByTen",
+                "key": "ctrl+shift+up"
+            },
+            {
+                "command": "incrementor.decrementByTen",
+                "key": "ctrl+shift+down"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "clean": "rm -rf ./out",
+        "cleanAndCompile": "npm run clean && npm run compile",
+        "lint": "eslint src --ext ts",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@nmsmith22389/eslint-config": "^1.0.2",
+        "@types/chai": "^4.2.12",
+        "@types/fs-extra": "^9.0.1",
+        "@types/glob": "^7.1.3",
+        "@types/lodash": "^4.14.159",
+        "@types/mocha": "^8.0.1",
+        "@types/node": "^14.0.27",
+        "@types/vscode": "^1.47.0",
+        "@types/xregexp": "^4.3.0",
+        "chai": "^4.2.0",
+        "eslint": "^7.6.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.1.1",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.9.7",
+        "vscode-test": "^1.4.0"
+    },
+    "dependencies": {
+        "bignumber.js": "^9.0.0",
+        "fs-extra": "^9.0.1",
+        "lodash": "^4.17.19",
+        "module-alias": "^2.2.2",
+        "xregexp": "^4.3.0"
+    },
+    "__metadata": {
+        "id": "e88910bc-3865-42a3-b938-11f09767a460",
+        "publisherDisplayName": "Neil Smith",
+        "publisherId": "a15e0961-c52b-4d00-be6f-39656828e6d7"
+    }
 }
