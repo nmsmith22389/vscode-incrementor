@@ -320,7 +320,10 @@
         "lint": "eslint src --ext ts",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
-        "test": "node ./out/test/runTest.js"
+        "test": "node ./out/test/runTest.js",
+        "release": "standard-version --message='build(release): %s'",
+        "release-minor": "standard-version --release-as=minor --message='build(release): %s'",
+        "release-major": "standard-version --release-as=major --message='build(release): %s'"
     },
     "devDependencies": {
         "@nmsmith22389/eslint-config": "^1.0.2",
@@ -336,6 +339,7 @@
         "eslint": "^7.6.0",
         "glob": "^7.1.6",
         "mocha": "^8.1.1",
+        "standard-version": "^8.0.2",
         "ts-node": "^8.10.2",
         "typescript": "^3.9.7",
         "vscode-test": "^1.4.0"
