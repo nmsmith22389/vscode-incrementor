@@ -1,3 +1,5 @@
+// TODO: Remove references to hex.
+
 import * as Code from 'vscode';
 import * as XRegExp from 'xregexp';
 import Adjustment from '~/Adjustment';
