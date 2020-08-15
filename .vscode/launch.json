@@ -16,7 +16,7 @@
                 "${workspaceFolder}/src/test/demos/demo.js"
             ],
             "outFiles": ["${workspaceFolder}/out/**/*.js"],
-            "preLaunchTask": "npm: cleanAndCompile"
+            "preLaunchTask": "npm: compile-clean"
         },
         {
             "name": "Run Extension (watch)",
@@ -39,7 +39,7 @@
                 "${workspaceFolder}/src/test/demos/demo.js"
             ],
             "outFiles": ["${workspaceFolder}/out/test/**/*.js"],
-            "preLaunchTask": "npm: cleanAndCompile"
+            "preLaunchTask": "npm: compile-clean"
         }
     ]
 }

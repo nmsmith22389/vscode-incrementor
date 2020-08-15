@@ -1,14 +1,20 @@
 {
     "name": "incrementor",
     "displayName": "Incrementor",
-    "description": "Advanced increment / decrement actions for just about anything!",
-    "icon": "images/icon.svg",
+    "description": "Advanced increment / decrement actions for numbers, enumerators, or just about anything else!",
+    "icon": "images/icon_retina.png",
     "version": "0.1.0",
     "publisher": "nmsmith89",
+    "author": {
+        "name": "Neil Smith",
+        "email": "nmsmith22389@gmail.com",
+        "url": "https://github.com/nmsmith22389"
+    },
     "galleryBanner": {
-        "color": "#E1F5FE",
+        "color": "#01a9f4",
         "theme": "light"
     },
+    "qna": false,
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/nmsmith22389/vscode-incrementor/issues",
@@ -20,7 +26,6 @@
         "url": "https://github.com/nmsmith22389/vscode-incrementor.git"
     },
     "categories": [
-        "Formatters",
         "Other"
     ],
     "_moduleAliases": {
@@ -313,17 +318,19 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
         "clean": "rm -rf ./out",
-        "cleanAndCompile": "npm run clean && npm run compile",
+        "compile-clean": "npm run clean && npm run compile",
+        "compile": "tsc -p ./",
         "lint": "eslint src --ext ts",
-        "watch": "tsc -watch -p ./",
+        "pack": "vsce package --yarn",
         "pretest": "npm run compile && npm run lint",
-        "test": "node ./out/test/runTest.js",
-        "release": "standard-version --message='build(release): %s'",
+        "pub": "vsce publish --yarn",
+        "release-major": "standard-version --release-as=major --message='build(release): %s'",
         "release-minor": "standard-version --release-as=minor --message='build(release): %s'",
-        "release-major": "standard-version --release-as=major --message='build(release): %s'"
+        "release": "standard-version --message='build(release): %s'",
+        "test": "node ./out/test/runTest.js",
+        "vscode:prepublish": "npm run compile",
+        "watch": "tsc -watch -p ./"
     },
     "devDependencies": {
         "@nmsmith22389/eslint-config": "^1.0.2",
@@ -350,10 +357,5 @@
         "lodash": "^4.17.19",
         "module-alias": "^2.2.2",
         "xregexp": "^4.3.0"
-    },
-    "__metadata": {
-        "id": "e88910bc-3865-42a3-b938-11f09767a460",
-        "publisherDisplayName": "Neil Smith",
-        "publisherId": "a15e0961-c52b-4d00-be6f-39656828e6d7"
     }
 }
