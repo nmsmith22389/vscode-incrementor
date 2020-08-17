@@ -20,11 +20,6 @@ export enum RangeType {
     Enum = 'enum',
 }
 
-// NOTE: Had to remove the non-closure return because it was returning the closur as a non-closure.
-// function value<T extends (...args: any[]) => unknown>(closure: T): ReturnType<T> {
-//     return closure() as ReturnType<T>;
-// }
-
 export default class WordRange {
     public readonly bounds = /[-\w#%.]+/;
 

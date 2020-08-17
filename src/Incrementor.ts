@@ -3,12 +3,6 @@ import * as Code from 'vscode';
 import Debug from '~/Debug';
 import Config from '~/Config';
 import Commands from '~/Commands';
-// import { upperFirst as _ucFirst } from 'lodash';
-// import * as XRegExp from 'xregexp';
-// import WordRange from './WordRange';
-// import { Settings } from './Settings';
-// import { RangeType } from './components/Enums/RangeType';
-// import BigNumber from '~/modules/BigNumber';
 
 /**
  * Base Incrementor class.

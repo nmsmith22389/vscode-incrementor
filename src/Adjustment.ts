@@ -2,7 +2,6 @@ import * as Code from 'vscode';
 import * as XRegExp from 'xregexp';
 // eslint-disable-next-line import/no-named-as-default
 import BigNumber from 'bignumber.js';
-// import { camelCase as _camelCase } from 'lodash';
 
 import Config, { Settings } from '~/Config';
 import Incrementor from '~/Incrementor';
@@ -101,7 +100,6 @@ export default class Adjustment {
         }
 
         return `numbers.${amount}.${direction}Value`;
-        // return _camelCase([direction, 'by', amount, 'value'].join(' '));
     }
 
     private getDelta(): number | undefined {
@@ -141,10 +139,6 @@ export default class Adjustment {
     }
 
     private adjustEnum(wordRange: WordRange): string {
-        // if (wordRange.value === undefined) {
-        //     return wordRange.value;
-        // }
-
         const enums = this.config.enums.values;
         const currentEnum = enums?.find((value) => value.includes(wordRange.value));
         const index = currentEnum?.indexOf(wordRange.value) ?? -1;

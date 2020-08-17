@@ -1,22 +1,6 @@
-// FIXME: Add support for deprecated options. NOTE: May not actually use/need anymore. Just use deprecated setting for the config warning msg.
-
 import { get as _get } from 'lodash';
 import * as Code from 'vscode';
 import Incrementor from '~/Incrementor';
-
-// eslint-disable-next-line import/exports-last
-export interface SettingsKeys {
-    enabled: boolean;
-    'numbers.ones.incrementValue': number;
-    'numbers.ones.decrementValue': number;
-    'numbers.tenths.incrementValue': number;
-    'numbers.tenths.decrementValue': number;
-    'numbers.tens.incrementValue': number;
-    'numbers.tens.decrementValue': number;
-    'numbers.decimalPlaces': number;
-    'enums.values': string[][];
-    'enums.loop': boolean;
-}
 
 interface NumbersIncDecValue {
     /**
@@ -28,6 +12,19 @@ interface NumbersIncDecValue {
      * The value to decrement a number by.
      */
     decrementValue?: number;
+}
+
+export interface SettingsKeys {
+    enabled: boolean;
+    'numbers.ones.incrementValue': number;
+    'numbers.ones.decrementValue': number;
+    'numbers.tenths.incrementValue': number;
+    'numbers.tenths.decrementValue': number;
+    'numbers.tens.incrementValue': number;
+    'numbers.tens.decrementValue': number;
+    'numbers.decimalPlaces': number;
+    'enums.values': string[][];
+    'enums.loop': boolean;
 }
 
 export interface Settings {
@@ -192,89 +189,4 @@ export default class Config implements Settings {
     public clearOverrides(): void {
         this.overrides = undefined;
     }
-
-    // TODO: Delete if not using anymore.
-    // public getDeprecatedSetting<T extends keyof SettingsKeys, I extends boolean = false>(
-    //     setting: T,
-    //     inspect?: I
-    // ):
-    //     | (I extends true
-    //           ? {
-    //                 key: string;
-
-    //                 defaultValue?: SettingsKeys[T];
-    //                 globalValue?: SettingsKeys[T];
-    //                 workspaceValue?: SettingsKeys[T];
-    //                 workspaceFolderValue?: SettingsKeys[T];
-
-    //                 defaultLanguageValue?: SettingsKeys[T];
-    //                 globalLanguageValue?: SettingsKeys[T];
-    //                 workspaceLanguageValue?: SettingsKeys[T];
-    //                 workspaceFolderLanguageValue?: SettingsKeys[T];
-
-    //                 languageIds?: string[];
-    //             }
-    //           : SettingsKeys[T])
-    //     | undefined {
-    //     let oldSetting: string | undefined;
-
-    //     switch (setting) {
-    //         case 'numbers.ones.incrementValue':
-    //             oldSetting = 'incrementByOneValue';
-    //             break;
-    //         case 'numbers.ones.decrementValue':
-    //             oldSetting = 'decrementByOneValue';
-    //             break;
-    //         case 'numbers.tenths.incrementValue':
-    //             oldSetting = 'incrementByTenthValue';
-    //             break;
-    //         case 'numbers.tenths.decrementValue':
-    //             oldSetting = 'decrementByTenthValue';
-    //             break;
-    //         case 'numbers.tens.incrementValue':
-    //             oldSetting = 'incrementByTenValue';
-    //             break;
-    //         case 'numbers.tens.decrementValue':
-    //             oldSetting = 'decrementByTenValue';
-    //             break;
-    //         case 'numbers.decimalPlaces':
-    //             oldSetting = 'decimalPlaces';
-    //             break;
-    //         case 'enums.values':
-    //             oldSetting = 'enums';
-    //             break;
-    //         case 'enums.loop':
-    //             oldSetting = 'loop';
-    //             break;
-    //         default:
-    //             oldSetting = undefined;
-    //             break;
-    //     }
-
-    //     if (oldSetting === undefined) {
-    //         return undefined;
-    //     }
-
-    //     return (inspect
-    //         ? this.settings.inspect<SettingsKeys[T]>(oldSetting)
-    //         : this.settings.get<SettingsKeys[T]>(oldSetting)) as
-    //         | (I extends true
-    //               ? {
-    //                     key: string;
-
-    //                     defaultValue?: SettingsKeys[T];
-    //                     globalValue?: SettingsKeys[T];
-    //                     workspaceValue?: SettingsKeys[T];
-    //                     workspaceFolderValue?: SettingsKeys[T];
-
-    //                     defaultLanguageValue?: SettingsKeys[T];
-    //                     globalLanguageValue?: SettingsKeys[T];
-    //                     workspaceLanguageValue?: SettingsKeys[T];
-    //                     workspaceFolderLanguageValue?: SettingsKeys[T];
-
-    //                     languageIds?: string[];
-    //                 }
-    //               : SettingsKeys[T])
-    //         | undefined;
-    // }
 }

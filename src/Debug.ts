@@ -1,7 +1,4 @@
-// import * as path from 'path';
-// import * as fs from 'fs-extra';
 import * as Code from 'vscode';
-// import {} from 'lodash';
 import Incrementor from '~/Incrementor';
 
 export enum LogLevel {

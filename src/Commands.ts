@@ -1,7 +1,4 @@
-// import * as path from 'path';
-// import * as fs from 'fs-extra';
 import * as Code from 'vscode';
-// import { find as _find, partial as _partial, trim as _trim, without as _without } from 'lodash';
 
 import Debug from '~/Debug';
 import Config from '~/Config';
@@ -60,10 +57,6 @@ export default class Commands {
                 AdjustmentDirection.DECREMENT,
                 AdjustmentAmount.TENS
             ),
-            // nextChannel: this.nextChannel,
-            // prevChannel: this.prevChannel,
-            // TestFavoriteFonts: _partial(this.testFonts, true),
-            /* eslint-enable @typescript-eslint/unbound-method */
         };
     }
 

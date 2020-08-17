@@ -1,8 +1,6 @@
 import * as path from 'path';
 import Mocha from 'mocha';
 import { glob } from 'glob';
-// import * as glob from 'glob';
-// import glob = require('glob');
 
 // eslint-disable-next-line import/prefer-default-export
 export function run(): Promise<void> {
