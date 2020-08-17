@@ -54,7 +54,7 @@ export interface Settings {
         values?: string[][];
 
         /**
-         * After reaching the end of an Enum set or Hex color, start back at the
+         * After reaching the end of an Enum set, start back at the
          * beginning.
          */
         loop?: boolean;
