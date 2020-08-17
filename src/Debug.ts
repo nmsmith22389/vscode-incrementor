@@ -1,4 +1,5 @@
 import * as Code from 'vscode';
+import { capitalize as _capitalize } from 'lodash';
 import Incrementor from '~/Incrementor';
 
 export enum LogLevel {
@@ -55,7 +56,7 @@ export default class Debug {
         }
 
         if (this.isDev) {
-            const prefix = 'Figlet Banner: ';
+            const prefix = _capitalize(this.extension.namespace) + ': ';
             const params: any[] = [];
 
             if (typeof message === 'string') {
