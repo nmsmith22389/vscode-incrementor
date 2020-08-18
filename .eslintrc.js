@@ -1,12 +1,12 @@
 /**
- * @typedef {import('@nmsmith22389/eslint-config/types/eslint').Linter.Config<Rules>} Config
- * @template {import('@nmsmith22389/eslint-config/types/eslint').Linter.RulesRecord} Rules
+ * @typedef {import('@smith-web-design/eslint-config/types/eslint').Linter.Config<Rules>} Config
+ * @template {import('@smith-web-design/eslint-config/types/eslint').Linter.RulesRecord} Rules
  */
 
 /**
- * @typedef {import('@nmsmith22389/eslint-config/types/eslint').ESLintRules} ESLintRules
- * @typedef {import('@nmsmith22389/eslint-config/types/import').ImportRules} ImportRules
- * @typedef {import('@nmsmith22389/eslint-config/types/typescript').TypescriptRules} TypescriptRules
+ * @typedef {import('@smith-web-design/eslint-config/types/eslint').ESLintRules} ESLintRules
+ * @typedef {import('@smith-web-design/eslint-config/types/import').ImportRules} ImportRules
+ * @typedef {import('@smith-web-design/eslint-config/types/typescript').TypescriptRules} TypescriptRules
  */
 
 /**
@@ -14,7 +14,11 @@
  */
 module.exports = {
     root: true,
-    extends: ['@nmsmith22389/eslint-config'],
+    extends: [
+        '@smith-web-design/eslint-config',
+        '@smith-web-design/eslint-config/import',
+        '@smith-web-design/eslint-config/typescript',
+    ],
     parserOptions: {
         project: './tsconfig.eslint.json',
     },
