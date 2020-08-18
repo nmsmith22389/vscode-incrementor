@@ -1,5 +1,5 @@
 import * as Code from 'vscode';
-import { capitalize as _capitalize } from 'lodash';
+import { capitalize as _capitalize } from 'lodash-es';
 import Incrementor from '~/Incrementor';
 
 export enum LogLevel {

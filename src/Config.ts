@@ -1,5 +1,5 @@
-import { get as _get } from 'lodash';
 import * as Code from 'vscode';
+import { get as _get } from 'lodash-es';
 import Incrementor from '~/Incrementor';
 
 interface NumbersIncDecValue {

@@ -7,7 +7,7 @@
     "configurations": [
         {
             "name": "Run Extension",
-            "type": "extensionHost",
+            "type": "pwa-extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
@@ -16,20 +16,24 @@
                 "${workspaceFolder}/src/test/demos/demo.js"
             ],
             "outFiles": ["${workspaceFolder}/out/**/*.js"],
-            "preLaunchTask": "npm: compile-clean"
+            "preLaunchTask": "npm: dev"
         },
         {
             "name": "Run Extension (watch)",
-            "type": "extensionHost",
+            "type": "pwa-extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
-            "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+            "args": [
+                "--disable-extensions",
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "${workspaceFolder}/src/test/demos/demo.js"
+            ],
             "outFiles": ["${workspaceFolder}/out/**/*.js"],
             "preLaunchTask": "npm: watch"
         },
         {
             "name": "Extension Tests",
-            "type": "extensionHost",
+            "type": "pwa-extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
@@ -39,7 +43,21 @@
                 "${workspaceFolder}/src/test/demos/demo.js"
             ],
             "outFiles": ["${workspaceFolder}/out/test/**/*.js"],
-            "preLaunchTask": "npm: compile-clean"
+            "preLaunchTask": "npm: dev"
+        },
+        {
+            "name": "Extension Tests (tsc)",
+            "type": "pwa-extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--disable-extensions",
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "--extensionTestsPath=${workspaceFolder}/out/test/suite/index",
+                "${workspaceFolder}/src/test/demos/demo.js"
+            ],
+            "outFiles": ["${workspaceFolder}/out/test/**/*.js"],
+            "preLaunchTask": "npm: test-compile"
         }
     ]
 }

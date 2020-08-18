@@ -1,8 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 
-// eslint-disable-next-line import/no-unassigned-import
-import 'module-alias/register';
-
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as Code from 'vscode';

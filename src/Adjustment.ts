@@ -1,5 +1,5 @@
 import * as Code from 'vscode';
-import * as XRegExp from 'xregexp';
+import XRegExp from 'xregexp';
 // eslint-disable-next-line import/no-named-as-default
 import BigNumber from 'bignumber.js';
 
