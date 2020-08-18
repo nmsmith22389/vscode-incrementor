@@ -43,21 +43,7 @@
                 "${workspaceFolder}/src/test/demos/demo.js"
             ],
             "outFiles": ["${workspaceFolder}/out/test/**/*.js"],
-            "preLaunchTask": "npm: dev"
-        },
-        {
-            "name": "Extension Tests (tsc)",
-            "type": "pwa-extensionHost",
-            "request": "launch",
-            "runtimeExecutable": "${execPath}",
-            "args": [
-                "--disable-extensions",
-                "--extensionDevelopmentPath=${workspaceFolder}",
-                "--extensionTestsPath=${workspaceFolder}/out/test/suite/index",
-                "${workspaceFolder}/src/test/demos/demo.js"
-            ],
-            "outFiles": ["${workspaceFolder}/out/test/**/*.js"],
-            "preLaunchTask": "npm: test-compile"
+            "preLaunchTask": "npm: vscode-test-compile"
         }
     ]
 }

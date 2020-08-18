@@ -328,7 +328,8 @@
         "test-compile": "npm run clean && tsc -p ./",
         "test": "node ./out/test/runTest.js",
         "vscode:prepublish": "npm run prod",
-        "watch": "webpack --mode development --watch"
+        "watch": "webpack --mode development --watch",
+        "vscode-test-compile": "npm run test-compile && npm run dev"
     },
     "devDependencies": {
         "@smith-web-design/eslint-config": "^2.0.4",
