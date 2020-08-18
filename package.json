@@ -324,7 +324,7 @@
         "lint": "eslint src --ext ts",
         "pack": "vsce package --yarn",
         "pretest": "npm run compile && npm run lint",
-        "pub": "vsce publish --yarn",
+        "pub": "vsce publish --githubBranch master",
         "release-major": "standard-version --release-as=major --message='build(release): %s'",
         "release-minor": "standard-version --release-as=minor --message='build(release): %s'",
         "release": "standard-version --message='build(release): %s'",
