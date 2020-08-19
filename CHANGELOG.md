@@ -16,5 +16,5 @@ All notable changes to this project will be documented in this file. See [standa
 
 * rewrite whole extension ([6dbfb18](https://github.com/nmsmith22389/vscode-incrementor/commit/6dbfb181ebc9629d3f5ae46bd45b7fde5cea3516))
 
-## [0.1.0] - 2017-02-14
+## 0.0.1 (2017-02-14)
 - Initial release
