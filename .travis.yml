@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "12.18.3"
+
+os:
+  - osx
+
+install:
+  - npm install
+  - npm run test-compile
+  - npm run dev
+
+script:
+  - npm run test

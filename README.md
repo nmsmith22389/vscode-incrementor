@@ -1,51 +1,81 @@
-# **Incrementor** *(VSCode Extension)*
+<!-- TODO: Redo all of the demo GIFs -->
 
-> Increment or decrement just about anything!
+<p align="center">
+    <br>
+    <img src="images/logo.png" alt="Incrementor Logo">
+</p>
 
-![Demo](images/demo-main.gif)
+# **Incrementor**
+
+[![GitHub stars](https://img.shields.io/github/stars/nmsmith22389/vscode-incrementor?style=social)](https://github.com/nmsmith22389/vscode-incrementor)
+
+[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/nmsmith89.incrementor?logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)&nbsp;&nbsp;
+[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/nmsmith89.incrementor?logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)&nbsp;&nbsp;
+[![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/nmsmith89.incrementor?logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=nmsmith89.incrementor)&nbsp;&nbsp;
+[![Travis (.com)](https://img.shields.io/travis/com/nmsmith22389/vscode-incrementor)](https://travis-ci.com/nmsmith22389/vscode-incrementor)&nbsp;&nbsp;
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/nmsmith22389/vscode-incrementor)
+
+---
+
+A Visual Studio Code extension that enables advanced increment / decrement actions for numbers, enumerators, or just about anything else!
+
+![Demo](images/by-tenth.gif)
 
 ## Contents
-* [Features](#features)
-  * [Numbers](#numbers)
-  * [Enumerators](#enumerators)
-  * [Multiple Selections](#multiple-selections)
-* [Usage](#usage)
-  * [Available Commands](#available-commands)
-* [Extension Settings](#extension-settings)
-  * [Keybindings](#keybindings)
-* [Known Issues](#known-issues)
-* [Change Log](#change-log)
-
+*(if you are reading this on the VSCode Marketplace then these links don't work for some reason)*
+- [Features](#features)
+    - [Numbers](#numbers)
+    - [Enumerators](#enumerators)
+    - [Multiple Selections](#multiple-selections)
+- [Usage](#usage)
+    - [Example](#example)
+    - [Available Commands](#available-commands)
+- [Extension Settings](#extension-settings)
+    - [`incrementor.enabled`](#incrementorenabled)
+    - [`incrementor.numbers.ones.incrementValue`](#incrementornumbersonesincrementvalue)
+    - [`incrementor.numbers.ones.decrementValue`](#incrementornumbersonesdecrementvalue)
+    - [`incrementor.numbers.tenths.incrementValue`](#incrementornumberstenthsincrementvalue)
+    - [`incrementor.numbers.tenths.decrementValue`](#incrementornumberstenthsdecrementvalue)
+    - [`incrementor.numbers.tens.incrementValue`](#incrementornumberstensincrementvalue)
+    - [`incrementor.numbers.tens.decrementValue`](#incrementornumberstensdecrementvalue)
+    - [`incrementor.numbers.decimalPlaces`](#incrementornumbersdecimalplaces)
+    - [`incrementor.enums.loop`](#incrementorenumsloop)
+    - [`incrementor.enums.values`](#incrementorenumsvalues)
+    - [Keybindings](#keybindings)
+- [Known Issues](#known-issues)
+- [Change Log](#change-log)
 
 ## Features
 
 ### Numbers
 
-![Numbers](images/demo-number.gif)
+![Numbers](images/by-one.gif)
 
-Numbers can be incremented or decremented by 1, 0.1, or 10. This works with integers, decimals, and negatives alike. The only *real* condition is that it is a **finite** number.
+Numbers can be incremented or decremented by 1, 0.1, or 10. This works with integers, decimals, and negatives alike. Suffixes may also be present. The only *real* condition is that it is a **finite** number.
 
 ### Enumerators
 
-![Enumerators](images/demo-enumerator.gif)
+![Enumerators](images/enum.gif)
 
-Enumerators can basically be any kind of text, like a variable or function or command.
+Enumerators can basically be any kind of text, like a variable or keyword.
 
 **They can only contain letters, numbers and dashes and must start with a letter and can't end with a dash.**
 
 In the extension settings you can add an array of strings that you want to cycle through. *i.e.* `["false", "true"]`
 
-Each array will cycle through the containing strings from beginning to end and also loop back around if you have the option set. Each array is considered a separate enumerator so `"false"` can only become `"true"` and vice versa depending what the array contains.
+Each array will cycle through the containing strings from beginning to end and also loop back around if you have the [option](#incrementorenumsloop) set. Each array is considered a separate enumerator so `"false"` can only become `"true"` and vice versa depending what the array contains.
 
 ### Multiple Selections
 
-![Multiple Selections](images/demo-multiple-selections.gif)
+![Multiple Selections](images/multiple-selections-50p.gif)
 
 Incrementor supports multiple selections, even in the same line. They do not all have to be the same type, so one selection/cursor could be a number and another could be an enumerator.
 
 ## Usage
 
 > **TIP:** Incrementing/decrementing can work with one or multiple cursors.<br>If there are no selections Incrementor will use the word under the caret(s) then select them.
+
+### Example
 
 For this example we will be incrementing a number.
 
@@ -75,73 +105,87 @@ Enables or disables Incrementor.
 * **Default:** true
 * **Must be:** Boolean
 
-### `incrementor.incByOneValue`
+### `incrementor.numbers.ones.incrementValue`
 
-The value *(ones place)* to increment a number by.
+The **ones place** value to increment a number by.
 
 * **Default:** 1
 * **Must be:** 1 to 9, Integer
 
-### `incrementor.decByOneValue`
+### `incrementor.numbers.ones.decrementValue`
 
-The value *(ones place)* to decrement a number by.
+The **ones place** value to decrement a number by.
 
 * **Default:** -1
 * **Must be:** -1 to -9, Integer
 
-### `incrementor.incByTenthValue`
+### `incrementor.numbers.tenths.incrementValue`
 
-The value *(tenths place)* to increment a number by
+The **tenths place** value to increment a number by.
 
 * **Default:** 0.1
-* **Must be:** 0.1 to 0.9, Tenths place only
+* **Must be:** 0.1 to 0.9, In multiples of 0.1
 
-### `incrementor.decByTenthValue`
+### `incrementor.numbers.tenths.decrementValue`
 
-The value *(tenths place)* to decrement a number by
+The **tenths place** value to decrement a number by.
 
 * **Default:** -0.1
-* **Must be:** -0.1 to -0.9, Tenths place only
+* **Must be:** -0.1 to -0.9, In multiples of 0.1
 
-### `incrementor.incByTenValue`
+### `incrementor.numbers.tens.incrementValue`
 
-The value *(tens place)* to increment a number by.
+The **tens place** value to increment a number by.
 
 * **Default:** 10
-* **Must be:** 10 to 90, Factor of 10
+* **Must be:** 10 to 90, In multiples of 10
 
-### `incrementor.decByTenValue`
+### `incrementor.numbers.tens.decrementValue`
 
-The value *(tens place)* to decrement a number by.
+The **tens place** value to decrement a number by.
 
 * **Default:** -10
-* **Must be:** -10 to -90, Factor of 10
+* **Must be:** -10 to -90, In multiples of 10
 
-### `incrementor.decimalPlaces`
+### `incrementor.numbers.decimalPlaces`
 
-The number of decimal places to round incremented/decremented decimal numbers to.<br>*(a value of 0 will disable rounding)*
+The number of decimal places to round incremented/decremented decimal numbers to.
 
-* **Default:** 0
-* **Must be:** 0 to 10, Integer
+*(a value of -1 will disable rounding)*
 
-### `incrementor.loopEnums`
+* **Default:** -1
+* **Must be:** -1 to 10, Integer
 
-After reaching the end of an Enum set, start back at the beginning.
+### `incrementor.enums.loop`
+
+After reaching the end of an enum set, start back at the beginning.
 
 * **Default:** true
 * **Must be:** Boolean
 
-### `incrementor.enums`
+### `incrementor.enums.values`
 
-An array of arrays, each containing a list of enums to cycle through.
+A group of arrays, each containing a list of enums to cycle through.
 
-* **Default:** `[["false", "true"], ["let", "const"]]`
-* **Must be:**
-  ```
-  Array >
-    Arrays >
-      Strings
-  ```
+* **Default:**
+    ```json
+    [
+        [
+            "false",
+            "true"
+        ],
+        [
+            "let",
+            "const"
+        ],
+        [
+            "public",
+            "private",
+            "protected"
+        ]
+    ]
+    ```
+* **Must be:** type `string[][]`
 
 ### Keybindings
 
@@ -149,28 +193,28 @@ For now, default keybindings aren't being included but these are the ones I use.
 
 ```json
 {
-  "command": "incrementor.incByOne",
-  "key": "ctrl+up"
+    "command": "incrementor.incrementByOne",
+    "key": "ctrl+up"
 },
 {
-  "command": "incrementor.decByOne",
-  "key": "ctrl+down"
+    "command": "incrementor.decrementByOne",
+    "key": "ctrl+down"
 },
 {
-  "command": "incrementor.incByTenth",
-  "key": "ctrl+alt+up"
+    "command": "incrementor.incrementByTenth",
+    "key": "ctrl+shift+alt+up"
 },
 {
-  "command": "incrementor.decByTenth",
-  "key": "ctrl+alt+down"
+    "command": "incrementor.decrementByTenth",
+    "key": "ctrl+shift+alt+down"
 },
 {
-  "command": "incrementor.incByTen",
-  "key": "ctrl+alt+cmd+up"
+    "command": "incrementor.incrementByTen",
+    "key": "ctrl+shift+up"
 },
 {
-  "command": "incrementor.decByTen",
-  "key": "ctrl+alt+cmd+down"
+    "command": "incrementor.decrementByTen",
+    "key": "ctrl+shift+down"
 }
 ```
 
@@ -178,7 +222,7 @@ For now, default keybindings aren't being included but these are the ones I use.
 
 * When using the redo command *(e.g. `cmd+shift+z`)* the selections can get a little wonky. I have no idea why it does that but I am looking for a solution.
 
-    Undo works as expected.
+    *Undo works as expected.*
 
 ## Change Log
 
