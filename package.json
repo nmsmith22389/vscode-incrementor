@@ -3,7 +3,7 @@
     "displayName": "Incrementor",
     "description": "Advanced increment / decrement actions for numbers, enumerators, or just about anything else!",
     "icon": "images/icon_retina.png",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "publisher": "nmsmith89",
     "author": {
         "name": "Neil Smith",
