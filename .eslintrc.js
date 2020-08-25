@@ -26,19 +26,5 @@ module.exports = {
         'import/max-dependencies': ['warn', { max: 15 }],
         'import/no-nodejs-modules': ['off'],
     },
-    overrides: [
-        {
-            files: ['webpack.mix.js'],
-            rules: {},
-        },
-        {
-            files: ['**/*.js'],
-            rules: {
-                '@typescript-eslint/no-unsafe-assignment': ['off'],
-                '@typescript-eslint/no-unsafe-call': ['off'],
-                '@typescript-eslint/no-unsafe-member-access': ['off'],
-                '@typescript-eslint/no-unsafe-return': ['off'],
-            },
-        },
-    ],
+    overrides: [],
 };

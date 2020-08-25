@@ -3,7 +3,7 @@
     "displayName": "Incrementor",
     "description": "Advanced increment / decrement actions for numbers, enumerators, or just about anything else!",
     "icon": "images/icon_retina.png",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "publisher": "nmsmith89",
     "author": {
         "name": "Neil Smith",
@@ -66,16 +66,6 @@
                     "markdownDescription": "The **ones place** value to increment a number by.",
                     "scope": "resource"
                 },
-                "incrementor.incrementByOneValue": {
-                    "type": "integer",
-                    "default": 1,
-                    "maximum": 9,
-                    "minimum": 1,
-                    "markdownDescription": "The **ones place** value to increment a number by.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.ones.incrementValue#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.ones.incrementValue instead."
-                },
                 "incrementor.numbers.ones.decrementValue": {
                     "type": "integer",
                     "default": -1,
@@ -83,16 +73,6 @@
                     "minimum": -9,
                     "markdownDescription": "The **ones place** value to decrement a number by.",
                     "scope": "resource"
-                },
-                "incrementor.decrementByOneValue": {
-                    "type": "integer",
-                    "default": -1,
-                    "maximum": -1,
-                    "minimum": -9,
-                    "markdownDescription": "The **ones place** value to decrement a number by.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.ones.decrementValue#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.ones.decrementValue instead."
                 },
                 "incrementor.numbers.tenths.incrementValue": {
                     "type": "number",
@@ -102,16 +82,6 @@
                     "markdownDescription": "The **tenths place** value to increment a number by.",
                     "scope": "resource"
                 },
-                "incrementor.incrementByTenthValue": {
-                    "type": "number",
-                    "default": 0.1,
-                    "maximum": 0.9,
-                    "minimum": 0.1,
-                    "markdownDescription": "The **tenths place** value to increment a number by.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tenths.incrementValue#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tenths.incrementValue instead."
-                },
                 "incrementor.numbers.tenths.decrementValue": {
                     "type": "number",
                     "default": -0.1,
@@ -119,16 +89,6 @@
                     "minimum": -0.9,
                     "markdownDescription": "The **tenths place** value to decrement a number by.",
                     "scope": "resource"
-                },
-                "incrementor.decrementByTenthValue": {
-                    "type": "number",
-                    "default": -0.1,
-                    "maximum": -0.1,
-                    "minimum": -0.9,
-                    "markdownDescription": "The **tenths place** value to decrement a number by.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tenths.decrementValue#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tenths.decrementValue instead."
                 },
                 "incrementor.numbers.tens.incrementValue": {
                     "type": "integer",
@@ -139,17 +99,6 @@
                     "markdownDescription": "The **tens place** value to increment a number by.",
                     "scope": "resource"
                 },
-                "incrementor.incrementByTenValue": {
-                    "type": "integer",
-                    "default": 10,
-                    "maximum": 90,
-                    "minimum": 10,
-                    "multipleOf": 10,
-                    "markdownDescription": "The **tens place** value to increment a number by.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tens.incrementValue#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tens.incrementValue instead."
-                },
                 "incrementor.numbers.tens.decrementValue": {
                     "type": "integer",
                     "default": -10,
@@ -159,17 +108,6 @@
                     "markdownDescription": "The **tens place** value to decrement a number by.",
                     "scope": "resource"
                 },
-                "incrementor.decrementByTenValue": {
-                    "type": "integer",
-                    "default": -10,
-                    "maximum": -10,
-                    "minimum": -90,
-                    "multipleOf": 10,
-                    "markdownDescription": "The **tens place** value to decrement a number by.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.tens.decrementValue#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.tens.decrementValue instead."
-                },
                 "incrementor.numbers.decimalPlaces": {
                     "type": "integer",
                     "default": -1,
@@ -177,16 +115,6 @@
                     "maximum": 10,
                     "markdownDescription": "The number of decimal places to round incremented/decremented decimal numbers to.\n\n*(a value of -1 will disable rounding)*",
                     "scope": "resource"
-                },
-                "incrementor.decimalPlaces": {
-                    "type": "integer",
-                    "default": -1,
-                    "minimum": -1,
-                    "maximum": 10,
-                    "markdownDescription": "The number of decimal places to round incremented/decremented decimal numbers to.\n*(a value of -1 will disable rounding)*",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.numbers.decimalPlaces#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.numbers.decimalPlaces instead."
                 },
                 "incrementor.enums.values": {
                     "type": "array",
@@ -215,43 +143,11 @@
                     "markdownDescription": "A group of arrays, each containing a list of enums to cycle through.",
                     "scope": "resource"
                 },
-                "incrementor.enums": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "pattern": "^\\w(?:\\-?\\w+)*$"
-                        }
-                    },
-                    "default": [
-                        [
-                            "false",
-                            "true"
-                        ],
-                        [
-                            "let",
-                            "const"
-                        ]
-                    ],
-                    "markdownDescription": "A group of arrays, each containing a list of enums to cycle through.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.enums.values#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.enums.values instead."
-                },
                 "incrementor.enums.loop": {
                     "type": "boolean",
                     "default": true,
                     "markdownDescription": "After reaching the end of an enum set, start back at the beginning.",
                     "scope": "resource"
-                },
-                "incrementor.loop": {
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "After reaching the end of an enum set, start back at the beginning.",
-                    "scope": "resource",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#incrementor.enums.loop#` instead.",
-                    "deprecationMessage": "Deprecated: Please use incrementor.enums.loop instead."
                 }
             }
         },
@@ -322,9 +218,10 @@
         "pack": "vsce package",
         "prod": "webpack --mode production",
         "pub": "vsce publish",
-        "release-major": "standard-version --release-as=major --message='build(release): %s'",
-        "release-minor": "standard-version --release-as=minor --message='build(release): %s'",
-        "release": "standard-version --message='build(release): %s'",
+        "release-major": "standard-version --release-as=major",
+        "release-minor": "standard-version --release-as=minor",
+        "release": "standard-version",
+        "release-auto": "ts-node ./scripts/release.ts",
         "test-compile": "npm run clean && tsc -p ./",
         "test": "node ./out/test/runTest.js",
         "vscode:prepublish": "npm run prod",
@@ -332,12 +229,15 @@
         "vscode-test-compile": "npm run test-compile && npm run dev"
     },
     "devDependencies": {
-        "@smith-web-design/eslint-config": "^2.0.4",
+        "@smith-web-design/eslint-config": "^2.0.5",
         "@types/chai": "^4.2.12",
+        "@types/conventional-recommended-bump": "^6.0.0",
         "@types/glob": "^7.1.3",
         "@types/lodash-es": "^4.17.3",
         "@types/mocha": "^8.0.3",
         "@types/node": "^14.6.0",
+        "@types/semver": "^7.3.3",
+        "@types/standard-version": "^7.0.0",
         "@types/vscode": "^1.48.0",
         "@types/xregexp": "^4.3.0",
         "bignumber.js": "^9.0.0",
@@ -346,9 +246,11 @@
         "glob": "^7.1.6",
         "lodash-es": "^4.17.15",
         "mocha": "^8.1.1",
+        "read-package-json": "^2.1.2",
         "standard-version": "^9.0.0",
-        "ts-loader": "^8.0.2",
-        "typescript": "^3.9.7",
+        "ts-loader": "^8.0.3",
+        "ts-node": "^9.0.0",
+        "typescript": "^4.0.2",
         "vscode-test": "^1.4.0",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12",
