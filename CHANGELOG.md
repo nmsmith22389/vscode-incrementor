@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/nmsmith22389/vscode-incrementor/compare/v1.0.1...v1.0.2) (2020-08-25)
+
+
+### Bug Fixes
+
+* fix conflict with deprecated options ([2794341](https://github.com/nmsmith22389/vscode-incrementor/commit/2794341f50409e4882df2d54c65c7c0f554469a7))
+
 ### [1.0.1](https://github.com/nmsmith22389/vscode-incrementor/compare/v1.0.0...v1.0.1) (2020-08-19)
 
 ## 1.0.0 (2020-08-19)
