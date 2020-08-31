@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="./read-package-json.d.ts" />
+/// <reference path="./standard-version.d.ts" />
 
 import path from 'path';
 import cp from 'child_process';
